@@ -1,26 +1,67 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0B0C0E;
+  --foreground: #EDEDED;
+  --altar-card: #15171C;
+  --altar-border: #232730;
+  --amber-primary: #FF6B2C;
+  --amber-glow: #F59E0B;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-altar-card: var(--altar-card);
+  --color-altar-border: var(--altar-border);
+  --color-amber-primary: var(--amber-primary);
+  --color-amber-glow: var(--amber-glow);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+@keyframes candleGlow {
+  0%, 100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 12px rgba(255, 107, 44, 0.85)) drop-shadow(0 0 24px rgba(245, 158, 11, 0.4));
+  }
+  50% {
+    opacity: 0.82;
+    filter: drop-shadow(0 0 6px rgba(255, 107, 44, 0.5)) drop-shadow(0 0 14px rgba(245, 158, 11, 0.25));
+  }
+}
+
+.animate-candle {
+  animation: candleGlow 2.4s infinite ease-in-out;
+}
+
+.crt-scanlines {
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.015) 50%, 
+    rgba(0, 0, 0, 0.2) 50%
+  );
+  background-size: 100% 4px;
+}
+
+/* Custom Amber Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0B0C0E;
+}
+::-webkit-scrollbar-thumb {
+  background: #2A2E39;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FF6B2C;
 }
